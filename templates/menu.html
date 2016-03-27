@@ -1,0 +1,75 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {%if 'username' not in session %}
+                <a class="btn green pull-right" href="{{url_for('showLogin')}}">Login </a>
+            {% else %}
+                <a class="btn red pull-right" href="{{url_for('disconnect')}}">Logout </a>
+            {% endif %}            
+            <a class="btn pull-right" href="{{ url_for('showRestaurants') }}">
+                All Restaurants</a>
+            <img class="menu_picture" src="{{creator.picture}}">
+            <span class="creator">By {{creator.name}}</span>
+            <h1 class="title">{{restaurant.name}} Menu</h1>
+        </div>
+        <div class="content">
+            <div class="section">
+                {% if user_id == restaurant.user_id%}
+                <a class="btn blue" href="{{url_for('newMenuItem', restaurant_id=restaurant.id) }}">Create new item</a>
+                {% endif %}
+            </div>
+            <div class="section messages">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li> <strong> {{message}} </strong> </li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+            </div><!-- mensajes -->
+
+            {% for i in items %}
+
+            <div class="listed_item">
+
+                <h3 class="item_name">{{i.name}} <span>({{i.course}})</span></h3>
+
+                <p class="item_description">{{i.description}}</p>
+
+                <p class="item_price"> {{i.price}} </p>
+                <p class="actions">{% if user_id == i.user_id%}
+                    
+
+                    <a class="btn yellow pull-right" href="{{url_for('editMenuItem', restaurant_id=restaurant.id, item_id= i.id)}}">Edit</a>
+                    <a class="btn red pull-right" href="{{url_for('deleteMenuItem', restaurant_id=restaurant.id, item_id= i.id)}}">Delete</a> 
+
+                {% endif %}</p>
+                
+            </div><!-- elemento -->
+
+            {% endfor %}
+            
+        </div>
+        
+    </div>
+    <script   src="http://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+    <script>
+        $().ready(function(){
+            $('.messages ul li')
+                .delay(5000)
+                .animate({opacity: '0'}, 500);
+            $('.messages')
+                .delay(5500)
+                .animate({height: '0'}, 2500);
+        });
+    </script>
+</body>
+
+</html>

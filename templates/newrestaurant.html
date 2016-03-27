@@ -1,0 +1,25 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Add Restaurant to Database</h1>
+        </div>
+        <div class="content">
+
+            <form class="section" action="#" method="post">
+                <label>Restaurant Name:</label>
+                <input type="text" name="name" />
+                <input class="btn green pull-right" type="submit" value="Save"></input>
+                <a class="btn blue pull-right" href="{{url_for('showRestaurants')}}">Cancel</a>
+            </form>
+
+        </div>
+        
+    </div>
+</body>
+
+</html>
