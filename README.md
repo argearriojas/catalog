@@ -15,13 +15,26 @@ Authentication is achieved through 3rd party providers: Google and Facebook
 
 ## Requirements
 
+- Flask
+```
+$ sudo pip install werkzeug==0.8.3
+$ sudo pip install flask==0.9
+$ sudo pip install Flask-Login==0.1.3
+```
+
+## Install
+
+Clone git catalog repository
+```
+$ git clone https://github.com/argx/catalog.git
+```
 
 ## Setup
 
-Open a shell and cd to "catalog_menu" folder.
+Open a shell and cd to "catalog" folder.
 
 ```
-$ cd /path/to/catalog_menu
+$ cd catalog
 ```
 
 ### Database setup
