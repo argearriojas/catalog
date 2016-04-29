@@ -26,7 +26,7 @@ $ sudo pip install Flask-Login==0.1.3
 
 Clone git catalog repository
 ```
-$ git clone https://github.com/argx/catalog.git
+$ git clone https://github.com/argearriojas/catalog.git
 ```
 
 ## Setup
@@ -74,3 +74,4 @@ A login button is provided at the top right corner of the layout.
 At login page just press one of the two buttons provided to gain access to create new elements in the application.
 
 Navigate through the menus, create your own, edit and delete as you need.
+
